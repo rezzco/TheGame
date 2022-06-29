@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
@@ -14,6 +15,9 @@ public class GameScreen extends JPanel {
 
 	private Random random;
 	private BufferedImage img;
+	private long lastTime;
+	private int  frames;
+
 
 	private ArrayList<BufferedImage> sprites = new ArrayList<>();
 
@@ -37,10 +41,20 @@ public class GameScreen extends JPanel {
 			}
 		}
 //		BufferedImage ork = img.getSubimage(0, 32, 32, 32);
-		
+		 getFPS();
 
+		
 	}
 
+	
+	private void getFPS() {
+		frames++;
+		if (System.currentTimeMillis()-lastTime>=1000) {
+			System.out.println("FPS: " +frames);
+			frames=0;
+			lastTime=System.currentTimeMillis();
+		}
+	}
 	private Color getRandomColore() {
 		return new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
 	}
