@@ -4,9 +4,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Random;
 
 import javax.swing.JPanel;
