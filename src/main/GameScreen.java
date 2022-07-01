@@ -39,20 +39,20 @@ public class GameScreen extends JPanel {
 			}
 		}
 //		BufferedImage ork = img.getSubimage(0, 32, 32, 32);
-		 getFPS();
+//		 getFPS();
 
 		
 	}
 
 	
-	private void getFPS() {
-		frames++;
-		if (System.currentTimeMillis()-lastTime>=1000) {
-			System.out.println("FPS: " +frames);
-			frames=0;
-			lastTime=System.currentTimeMillis();
-		}
-	}
+//	private void getFPS() {
+//		frames++;
+//		if (System.currentTimeMillis()-lastTime>=1000) {
+//			System.out.println("FPS: " +frames);
+//			frames=0;
+//			lastTime=System.currentTimeMillis();
+//		}
+//	}
 	private Color getRandomColore() {
 		return new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
 	}
