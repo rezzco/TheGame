@@ -21,11 +21,12 @@ public class Game extends JFrame implements Runnable {
 
 		importImage();
 
-		setSize(640, 640);
+		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		gameScreen = new GameScreen(img);
 		add(gameScreen);
+		pack();
 		setVisible(true);
 
 	}
@@ -70,19 +71,21 @@ public class Game extends JFrame implements Runnable {
 
 		int updates = 0;
 		int frames = 0;
+		long now;
 
 		// Render
 		while (true) {
-			if (System.nanoTime() - lastFrame >= timePerFrame) {
+			now = System.nanoTime();
+			if (now - lastFrame >= timePerFrame) {
 				repaint();
-				lastFrame = System.nanoTime();
+				lastFrame = now;
 				frames++;
 			}
 //			Update
-			if (System.nanoTime() - lastUpdate >= timePerUpdate) {
+			if (now - lastUpdate >= timePerUpdate) {
 				updateGame();
 				updates++;
-				lastUpdate = System.nanoTime();
+				lastUpdate = now;
 			}
 			if (System.currentTimeMillis() - lastOneSecound >= 1000) {
 				System.out.println("FPS: " + frames + "|" + "UPS: " + updates);
