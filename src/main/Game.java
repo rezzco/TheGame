@@ -7,12 +7,18 @@ import java.io.InputStream;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
+import inputs.KeyboardListener;
+import inputs.MouseActionListener;
+
 public class Game extends JFrame implements Runnable {
 
 	private static final double FPS_SET = 120.0;
 	private static final double UPS_SET = 60.0;
 	private GameScreen gameScreen;
 	private BufferedImage img;
+	
+	private MouseActionListener mouseListener ;
+	private KeyboardListener keyboardListener;
 
 	private Thread gameThread;
 
@@ -31,6 +37,16 @@ public class Game extends JFrame implements Runnable {
 
 	}
 
+	private void initInputs() {
+		mouseListener = new MouseActionListener();
+		keyboardListener = new KeyboardListener();
+		addMouseListener(mouseListener);
+		addMouseMotionListener(mouseListener);
+		addKeyListener(keyboardListener);
+		
+		requestFocus();
+
+	}
 	private void importImage() {
 		InputStream is = getClass().getResourceAsStream("/spriteatlas.png");
 		try {
@@ -53,8 +69,8 @@ public class Game extends JFrame implements Runnable {
 	}
 
 	private void start() {
-		gameThread = new Thread(this) {
-		};
+		gameThread = new Thread(this) {};
+		initInputs();
 		gameThread.start();
 
 	}
