@@ -24,13 +24,10 @@ public class Game extends JFrame implements Runnable {
 
 	public Game() {
 		super();
-
-		importImage();
-
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
-		gameScreen = new GameScreen(img);
+		gameScreen = new GameScreen(this);
 		add(gameScreen);
 		pack();
 		setVisible(true);
@@ -47,16 +44,7 @@ public class Game extends JFrame implements Runnable {
 		requestFocus();
 
 	}
-	private void importImage() {
-		InputStream is = getClass().getResourceAsStream("/spriteatlas.png");
-		try {
-			img = ImageIO.read(is);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
+	
 
 	private void updateGame() {
 
