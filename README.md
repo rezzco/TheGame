@@ -1,4 +1,4 @@
-#The Game
+# The Game
 
 my attempt to learn how game development works in java
 
